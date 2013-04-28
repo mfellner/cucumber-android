@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidCucumber.iml" filepath="$PROJECT_DIR$/AndroidCucumber.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AndroidCucumberExample/AndroidCucumberExample.iml" filepath="$PROJECT_DIR$/../AndroidCucumberExample/AndroidCucumberExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AndroidCucumberExampleTest/AndroidCucumberExampleTest.iml" filepath="$PROJECT_DIR$/../AndroidCucumberExampleTest/AndroidCucumberExampleTest.iml" />
+    </modules>
+  </component>
+</project>
+
