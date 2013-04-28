@@ -1,4 +1,6 @@
 *.iml
 *.class
+.idea/
 bin/
 gen/
+out/
