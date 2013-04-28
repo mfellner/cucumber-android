@@ -13,24 +13,12 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="CUCUMBER" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b79a2944-5825-4a13-a634-63516c016d19" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/at/mfellner/android/cucumber/AndroidResource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/at/mfellner/android/cucumber/AndroidResourceLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/at/mfellner/android/cucumber/CucumberTestRunner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AndroidCucumberExampleTest/src/at/mfellner/android/cucumber/example/MainActivitySteps.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AndroidCucumberExampleTest/assets/features/main_activity.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidCucumberExample/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../AndroidCucumberExample/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidCucumberExampleTest/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../AndroidCucumberExampleTest/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidCucumberExample/src/at/mfellner/android/cucumber/example/MainActivity.java" afterPath="$PROJECT_DIR$/../AndroidCucumberExample/src/at/mfellner/android/cucumber/example/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidCucumberExampleTest/src/at/mfellner/android/cucumber/example/MainActivityTest.java" afterPath="$PROJECT_DIR$/../AndroidCucumberExampleTest/src/at/mfellner/android/cucumber/example/MainActivityTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidCucumberExample/project.properties" afterPath="$PROJECT_DIR$/../AndroidCucumberExample/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidCucumberExampleTest/project.properties" afterPath="$PROJECT_DIR$/../AndroidCucumberExampleTest/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AndroidCucumberExampleTest/README" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/mfellner/android/cucumber/CucumberTestRunner.java" afterPath="$PROJECT_DIR$/src/at/mfellner/android/cucumber/CucumberTestRunner.java" />
     </list>
     <ignored path="AndroidCucumber.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,7 +31,7 @@
     <file path="$PROJECT_DIR$/../AndroidCucumberExample/gen/at/mfellner/android/cucumber/example/Manifest.java" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367162393493" ignored="false" />
     <file path="$PROJECT_DIR$/../AndroidCucumberExample/gen/at/mfellner/android/cucumber/example/R.java" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367162393493" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/plugins/android/lib/android.jar!/org/jetbrains/android/android.xsd" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367162538425" ignored="false" />
-    <file path="/CucumberTestRunner.java" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367180355261" ignored="false" />
+    <file path="/CucumberTestRunner.java" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367182350366" ignored="false" />
     <file path="/opt/android-sdk-macosx/platforms/android-17/data/res/values-hr/donottranslate-cldr.xml" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367163010488" ignored="false" />
     <file path="/opt/android-sdk-macosx/platforms/android-17/data/res/values-hr/strings.xml" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367163010488" ignored="false" />
     <file path="/opt/android-sdk-macosx/platforms/android-17/data/res/values-hu/donottranslate-cldr.xml" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367163010488" ignored="false" />
@@ -772,6 +760,7 @@
     <file path="/AndroidResourceLoader.java" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367181173102" ignored="false" />
     <file path="/AndroidResource.java" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367181329394" ignored="false" />
     <file path="/MainActivityTest.java" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367179715684" ignored="false" />
+    <file path="/README" changelist="b79a2944-5825-4a13-a634-63516c016d19" time="1367182550864" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -862,19 +851,19 @@
       <file leaf-file-name="CucumberTestRunner.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/at/mfellner/android/cucumber/CucumberTestRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="60" selection-start="3320" selection-end="3320" vertical-scroll-proportion="0.0">
+            <state line="79" column="0" selection-start="3749" selection-end="3749" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3518#3527#0" expanded="true" />
+                <element signature="e#3681#3690#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidResourceLoader.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AndroidResourceLoader.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/at/mfellner/android/cucumber/AndroidResourceLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="9" selection-start="1227" selection-end="1227" vertical-scroll-proportion="0.0">
+            <state line="27" column="42" selection-start="901" selection-end="901" vertical-scroll-proportion="0.32445922">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#783#793#0" expanded="true" />
@@ -894,15 +883,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="4" selection-start="28" selection-end="28" vertical-scroll-proportion="0.10380623">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MainActivitySteps.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../AndroidCucumberExampleTest/src/at/mfellner/android/cucumber/example/MainActivitySteps.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -910,15 +890,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main_activity.feature" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../AndroidCucumberExampleTest/assets/features/main_activity.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="22" selection-start="138" selection-end="138" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -952,10 +923,11 @@
         <option value="$PROJECT_DIR$/../AndroidCucumberExampleTest/src/at/mfellner/android/cucumber/example/MainActivitySteps.java" />
         <option value="$PROJECT_DIR$/../AndroidCucumberExampleTest/src/at/mfellner/android/cucumber/example/MainActivityFeature.feature" />
         <option value="$PROJECT_DIR$/../AndroidCucumberExampleTest/src/at/mfellner/android/cucumber/example/MainActivityTest.java" />
-        <option value="$PROJECT_DIR$/src/at/mfellner/android/cucumber/CucumberTestRunner.java" />
-        <option value="$PROJECT_DIR$/src/at/mfellner/android/cucumber/AndroidResourceLoader.java" />
         <option value="$PROJECT_DIR$/src/at/mfellner/android/cucumber/AndroidResource.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/at/mfellner/android/cucumber/CucumberTestRunner.java" />
+        <option value="$PROJECT_DIR$/src/at/mfellner/android/cucumber/AndroidResourceLoader.java" />
+        <option value="$PROJECT_DIR$/../AndroidCucumberExampleTest/README" />
       </list>
     </option>
   </component>
@@ -1025,24 +997,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="example" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidCucumber" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidCucumberExampleTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="features" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1486,13 +1440,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///opt/android-sdk-macosx/sources/android-17/android/test/ActivityInstrumentationTestCase2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="22" selection-start="1794" selection-end="1794" vertical-scroll-proportion="0.33296704">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="18" selection-start="69" selection-end="69" vertical-scroll-proportion="0.049916804">
@@ -1549,6 +1496,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="4" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../AndroidCucumberExampleTest/src/at/mfellner/android/cucumber/example/MainActivityTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
@@ -1563,35 +1517,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../AndroidCucumberExampleTest/src/at/mfellner/android/cucumber/example/MainActivitySteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="16" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/mfellner/android/cucumber/AndroidResourceLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="9" selection-start="1227" selection-end="1227" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#783#793#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/mfellner/android/cucumber/CucumberTestRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="60" selection-start="3320" selection-end="3320" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3518#3527#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/at/mfellner/android/cucumber/AndroidResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="58" selection-start="753" selection-end="753" vertical-scroll-proportion="0.0">
@@ -1601,10 +1526,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/../AndroidCucumberExampleTest/src/at/mfellner/android/cucumber/example/MainActivitySteps.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="4" selection-start="28" selection-end="28" vertical-scroll-proportion="0.10380623">
+        <state line="16" column="16" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/mfellner/android/cucumber/CucumberTestRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="0" selection-start="3749" selection-end="3749" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3681#3690#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../AndroidCucumberExampleTest/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="91" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/mfellner/android/cucumber/AndroidResourceLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="42" selection-start="901" selection-end="901" vertical-scroll-proportion="0.32445922">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#783#793#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

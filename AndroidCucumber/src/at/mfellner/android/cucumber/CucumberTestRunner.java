@@ -70,6 +70,8 @@ public class CucumberTestRunner extends Instrumentation implements TestSuiteProv
         Context context = getContext();
         ClassLoader classLoader = context.getClassLoader();
         Properties properties = new Properties();
+        // We must supply an argument, otherwise cucumber won't attempt to load
+        // the features. By default, .feature files should be in /assets/features.
         properties.setProperty("cucumber.options", "features");
         RuntimeOptions runtimeOptions = new RuntimeOptions(properties);
         ResourceLoader resourceLoader = new AndroidResourceLoader(context);
