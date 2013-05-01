@@ -1,10 +1,7 @@
-// Copyright © 2013 Maximilian Fellner <max.fellner@gmail.com>
-
 package at.mfellner.android.cucumber;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.util.Log;
 import cucumber.runtime.io.Resource;
 
 import java.io.IOException;
@@ -15,7 +12,6 @@ public class AndroidResource implements Resource {
     private final String mPath;
 
     public AndroidResource(Context context, String path) {
-        Log.d("CUCUMBER", String.format("New AndroidResource '%s'", path));
         mContext = context;
         mPath = path;
     }

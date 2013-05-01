@@ -1,5 +1,3 @@
-// Copyright © 2013 Maximilian Fellner <max.fellner@gmail.com>
-
 package at.mfellner.android.cucumber;
 
 import android.content.Context;
@@ -21,7 +19,6 @@ public class AndroidResourceLoader implements ResourceLoader {
 
     @Override
     public Iterable<Resource> resources(String path, String suffix) {
-        Log.d("CUCUMBER", String.format("Load resources with suffix '%s' from 'assets/%s'", suffix, path));
         List<Resource> resources = new ArrayList<Resource>();
         AssetManager am = mContext.getAssets();
         try {
@@ -32,7 +29,7 @@ public class AndroidResourceLoader implements ResourceLoader {
                 }
             }
         } catch (IOException e) {
-            Log.e("CUCUMBER", e.toString());
+            Log.e(CucumberTestRunner.TAG, "AndroidResourceLoader.resources " + e.toString());
         }
         return resources;
     }

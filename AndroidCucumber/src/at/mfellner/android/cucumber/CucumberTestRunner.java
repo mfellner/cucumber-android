@@ -5,22 +5,33 @@ import android.app.Instrumentation;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
+import android.test.AndroidTestRunner;
 import android.test.TestSuiteProvider;
 import android.util.Log;
 import cucumber.runtime.Backend;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.RuntimeOptions;
 import cucumber.runtime.io.ResourceLoader;
-import cucumber.runtime.java.JavaBackend;
+import dalvik.system.DexFile;
+import ext.com.android.internal.os.LoggingPrintStream;
+import gherkin.formatter.Formatter;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestResult;
 import junit.framework.TestSuite;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 public class CucumberTestRunner extends Instrumentation implements TestSuiteProvider {
 
-//    public static final String ARGUMENT_TEST_CLASS = "class";
+    //    public static final String ARGUMENT_TEST_CLASS = "class";
 //    public static final String ARGUMENT_TEST_PACKAGE = "package";
 //    public static final String ARGUMENT_TEST_SIZE_PREDICATE = "size";
 //    public static final String ARGUMENT_DELAY_MSEC = "delay_msec";
@@ -51,8 +62,8 @@ public class CucumberTestRunner extends Instrumentation implements TestSuiteProv
 //    private static final String LOG_TAG = "InstrumentationTestRunner";
 //    private final Bundle mResults = new Bundle();
 //    private Bundle mArguments;
-//    private AndroidTestRunner mTestRunner;
-//    private boolean mDebug;
+    private AndroidTestRunner mTestRunner;
+    //    private boolean mDebug;
 //    private boolean mJustCount;
 //    private boolean mSuiteAssignmentMode;
 //    private int mTestCount;
@@ -60,7 +71,7 @@ public class CucumberTestRunner extends Instrumentation implements TestSuiteProv
 //    private boolean mCoverage;
 //    private String mCoverageFilePath;
 //    private int mDelayMsec;
-
+    public static final String TAG = "cucumber-android";
     private Runtime mRuntime;
 
     @Override
@@ -69,25 +80,29 @@ public class CucumberTestRunner extends Instrumentation implements TestSuiteProv
 
         Context context = getContext();
         ClassLoader classLoader = context.getClassLoader();
+        String packageName = context.getPackageName();
+
         Properties properties = new Properties();
-        // We must supply an argument, otherwise cucumber won't attempt to load
-        // the features. By default, .feature files should be in /assets/features.
-        properties.setProperty("cucumber.options", "features");
+        // hack: the package name of the test-project should have '.test' at the end
+        String glue = packageName.substring(0, packageName.lastIndexOf(".test"));
+        // this must be a subdirectory of the apk's assets directory
+        String features = "features";
+        properties.setProperty("cucumber.options", String.format("-g %s %s", glue, features));
         RuntimeOptions runtimeOptions = new RuntimeOptions(properties);
+
+        Formatter formatter = new AndroidFormatter(TAG);
+        runtimeOptions.formatters.add(formatter);
+
         ResourceLoader resourceLoader = new AndroidResourceLoader(context);
         List<Backend> backends = new ArrayList<Backend>();
-        backends.add(new JavaBackend(resourceLoader));
-
-        Log.d("CUCUMBER", classLoader.toString());
-
-        try {
-            Class<?> clazz = classLoader.loadClass("at.mfellner.android.cucumber.example.MainActivitySteps");
-            Log.d("CUCUMBER", clazz.toString());
-        } catch (ClassNotFoundException e) {
-            Log.e("CUCUMBER", e.toString());
-        }
-
+        backends.add(new AndroidBackend(context));
         mRuntime = new Runtime(resourceLoader, classLoader, backends, runtimeOptions);
+
+//        mTestRunner = new AndroidTestRunner();
+//        mTestRunner.setContext(getTargetContext());
+//        mTestRunner.setInstrumentation(this);
+//        mTestRunner.setTest(getTestSuite());
+
 
 //        mArguments = arguments;
 //
@@ -272,14 +287,24 @@ public class CucumberTestRunner extends Instrumentation implements TestSuiteProv
     @Override
     public void onStart() {
         Looper.prepare();
+
+        LoggingPrintStream loggingPrintStream = new LoggingPrintStream() {
+            @Override
+            protected void log(String line) {
+                Log.d(TAG, line);
+            }
+        };
+        System.setOut(loggingPrintStream);
+
         try {
             mRuntime.run();
         } catch (Exception e) {
-            Log.e("CUCUMBER", e.toString());
+            Log.e(TAG, "Cucumber runtime error:", e);
         } finally {
             getContext().getAssets().close();
-            finish(Activity.RESULT_OK, new Bundle());
         }
+//        mTestRunner.runTest();
+        finish(Activity.RESULT_OK, new Bundle());
 
 //        prepareLooper();
 //
@@ -324,21 +349,29 @@ public class CucumberTestRunner extends Instrumentation implements TestSuiteProv
 //        }
     }
 
+    @Override
     public TestSuite getTestSuite() {
-        return getAllTests();
+        TestSuite suite = new TestSuite();
+        suite.addTest(new CucumberTest());
+        return suite;
     }
 
-    /**
-     * Override this to define all of the tests to run in your package.
-     */
-    public TestSuite getAllTests() {
-        return null;
-    }
+    private final class CucumberTest extends TestCase {
+        @Override
+        public int countTestCases() {
+            return 1;
+        }
 
-    /**
-     * Override this to provide access to the class loader of your package.
-     */
-    public ClassLoader getLoader() {
-        return null;
+        @Override
+        public void run(TestResult testResult) {
+            try {
+                mRuntime.run();
+            } catch (Exception e) {
+                Log.e(TAG, "Cucumber runtime error:", e);
+            } finally {
+                getContext().getAssets().close();
+            }
+            testResult.endTest(CucumberTest.this);
+        }
     }
 }
