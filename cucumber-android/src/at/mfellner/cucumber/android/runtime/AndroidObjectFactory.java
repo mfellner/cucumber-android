@@ -2,8 +2,6 @@ package at.mfellner.cucumber.android.runtime;
 
 import android.app.Instrumentation;
 import android.test.InstrumentationTestCase;
-import android.util.Log;
-import at.mfellner.cucumber.android.api.CucumberInstrumentation;
 import cucumber.runtime.CucumberException;
 import cucumber.runtime.java.ObjectFactory;
 
@@ -49,12 +47,10 @@ class AndroidObjectFactory implements ObjectFactory {
 
     private <T> T cacheNewInstance(Class<T> type) {
         try {
-            Log.w(CucumberInstrumentation.TAG, "cacheNewInstance: " + type.getName());
             Constructor<T> constructor = type.getConstructor();
             T instance = constructor.newInstance();
 
             if (instance instanceof InstrumentationTestCase) {
-                Log.w(CucumberInstrumentation.TAG, "injectInstrumentation: " + mInstrumentation.toString());
                 ((InstrumentationTestCase) instance).injectInstrumentation(mInstrumentation);
             }
             mInstances.put(type, instance);
