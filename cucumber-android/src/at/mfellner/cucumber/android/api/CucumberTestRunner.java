@@ -34,11 +34,9 @@ class CucumberTestRunner extends ParentRunner<FeatureRunner> {
 
         Context context = instrumentation.getContext();
         ClassLoader classLoader = context.getClassLoader();
-        String packageName = context.getPackageName();
+        String glue = instrumentation.getTargetContext().getPackageName();
 
         Properties properties = new Properties();
-        // hack: the package name of the test-project should have '.test' at the end
-        String glue = packageName.substring(0, packageName.lastIndexOf(".test"));
         // 'features' must be a subdirectory of the test-projects 'assets' directory
         String features = "features";
         properties.setProperty("cucumber.options", String.format("-g %s %s", glue, features));
