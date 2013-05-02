@@ -1,5 +1,6 @@
 *.iml
 *.class
+local.properties
 libs/*.jar
 .idea/
 bin/
