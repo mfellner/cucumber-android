@@ -1,5 +1,6 @@
 *.iml
 *.class
+libs/*.jar
 .idea/
 bin/
 gen/
