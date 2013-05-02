@@ -11,4 +11,4 @@ If you're using Eclipse, the .jars in /libs should be automatically included. In
 
 If you're using ant, you should be able to just run `ant debug` or `ant release`.
 
-When building with ant, also make sure to set `$ANDROID_HOME or create local.properties with `sdk.dir=/path/to/sdk`.
+When building with ant, also make sure to set `$ANDROID_HOME` or create local.properties with `sdk.dir=/path/to/sdk`.
