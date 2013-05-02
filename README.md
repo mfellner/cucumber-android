@@ -5,7 +5,7 @@ This project is basically an updated and improved version of [ccady-ubermind](ht
 1. Include cucumber-android as a library project or download the jar. Don't forget to include the dependencies.
 2. Create an empty Android test-project and set the `instrumentation` like so:
 
-```html
+```xml
 <instrumentation
   android:name="at.mfellner.cucumber.android.api.CucumberInstrumentation"
   android:targetPackage="at.mfellner.android.cucumber.example"/>
