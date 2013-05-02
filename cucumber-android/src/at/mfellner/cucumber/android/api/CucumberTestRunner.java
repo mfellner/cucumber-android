@@ -34,7 +34,8 @@ class CucumberTestRunner extends ParentRunner<FeatureRunner> {
 
         Context context = instrumentation.getContext();
         ClassLoader classLoader = context.getClassLoader();
-        String glue = instrumentation.getTargetContext().getPackageName();
+        // this is the package name as defined in AndroidManifest.xml
+        String glue = context.getPackageName();
 
         Properties properties = new Properties();
         // 'features' must be a subdirectory of the test-projects 'assets' directory
