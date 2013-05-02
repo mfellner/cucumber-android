@@ -1,4 +1,4 @@
-package at.mfellner.android.cucumber;
+package at.mfellner.cucumber.android.runtime;
 
 import android.content.Context;
 import cucumber.api.java.After;

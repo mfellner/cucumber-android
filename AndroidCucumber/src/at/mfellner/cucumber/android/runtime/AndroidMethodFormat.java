@@ -1,4 +1,4 @@
-package at.mfellner.android.cucumber;
+package at.mfellner.cucumber.android.runtime;
 
 import cucumber.runtime.CucumberException;
 
@@ -7,7 +7,7 @@ import java.text.MessageFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AndroidMethodFormat {
+class AndroidMethodFormat {
     private static final Pattern METHOD_PATTERN = Pattern.compile("((?:static\\s|public\\s)+)([^\\s]*)\\s\\.?(.*)\\.([^\\(]*)\\(([^\\)]*)\\)(?: throws )?(.*)");
     private static final String PACKAGE_PATTERN = "[^,]*\\.";
     private final MessageFormat format;

@@ -1,9 +1,4 @@
-/**
- * This file is part of cucumber-jvm. https://github.com/cucumber/cucumber-jvm
- *
- * Copyright (c) 2008,2009,2010,2011 Aslak Hellesøy and contributors
- */
-package at.mfellner.android.cucumber;
+package at.mfellner.cucumber.android.runtime;
 
 import cucumber.runtime.snippets.Snippet;
 

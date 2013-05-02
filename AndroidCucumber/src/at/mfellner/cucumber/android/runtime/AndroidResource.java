@@ -1,4 +1,4 @@
-package at.mfellner.android.cucumber;
+package at.mfellner.cucumber.android.runtime;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -7,7 +7,7 @@ import cucumber.runtime.io.Resource;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class AndroidResource implements Resource {
+class AndroidResource implements Resource {
     private final Context mContext;
     private final String mPath;
 

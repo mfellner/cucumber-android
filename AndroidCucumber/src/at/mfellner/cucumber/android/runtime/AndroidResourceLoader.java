@@ -1,8 +1,9 @@
-package at.mfellner.android.cucumber;
+package at.mfellner.cucumber.android.runtime;
 
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
+import at.mfellner.cucumber.android.api.CucumberInstrumentation;
 import cucumber.runtime.io.Resource;
 import cucumber.runtime.io.ResourceLoader;
 
@@ -29,7 +30,7 @@ public class AndroidResourceLoader implements ResourceLoader {
                 }
             }
         } catch (IOException e) {
-            Log.e(CucumberTestRunner.TAG, "AndroidResourceLoader.resources " + e.toString());
+            Log.e(CucumberInstrumentation.TAG, "AndroidResourceLoader.resources " + e.toString());
         }
         return resources;
     }

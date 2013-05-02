@@ -1,11 +1,10 @@
-package at.mfellner.android.cucumber;
+package at.mfellner.cucumber.android.runtime;
 
 import android.content.Context;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.runtime.*;
 import cucumber.runtime.java.ObjectFactory;
-import cucumber.runtime.java.picocontainer.PicoFactory;
 import cucumber.runtime.snippets.SnippetGenerator;
 import gherkin.formatter.model.Step;
 
@@ -22,7 +21,8 @@ public class AndroidBackend implements Backend {
 
     public AndroidBackend(Context context) {
         mClasspathMethodScanner = new AndroidClasspathMethodScanner(context);
-        mObjectFactory = new PicoFactory();
+        mObjectFactory = new DefaultJavaObjectFactory();
+        // cucumber.runtime.java.picocontainer.PicoFactory would also work
     }
 
     public AndroidBackend(Context context, ObjectFactory objectFactory) {

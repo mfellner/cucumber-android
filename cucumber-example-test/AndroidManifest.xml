@@ -16,7 +16,7 @@
     "adb shell am instrument -w at.mfellner.android.cucumber.example.tests/android.test.InstrumentationTestRunner"
     -->
     <instrumentation
-            android:name="at.mfellner.android.cucumber.CucumberTestRunner"
+            android:name="at.mfellner.cucumber.android.api.CucumberInstrumentation"
             android:targetPackage="at.mfellner.android.cucumber.example"
             android:label="Tests for at.mfellner.android.cucumber.example"/>
 </manifest>
