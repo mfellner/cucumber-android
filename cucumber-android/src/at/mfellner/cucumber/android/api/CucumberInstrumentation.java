@@ -29,9 +29,8 @@ public class CucumberInstrumentation extends Instrumentation {
     public void onCreate(Bundle arguments) {
         super.onCreate(arguments);
 
-        Context context = getContext();
         try {
-            mTestRunner = new CucumberTestRunner(context);
+            mTestRunner = new CucumberTestRunner(this);
         } catch (InitializationError e) {
             Log.e(TAG, "cannot instantiate CucumberTestRunner", e);
             finish(Activity.RESULT_CANCELED, null);

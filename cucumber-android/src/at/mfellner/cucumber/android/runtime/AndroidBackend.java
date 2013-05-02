@@ -1,5 +1,6 @@
 package at.mfellner.cucumber.android.runtime;
 
+import android.app.Instrumentation;
 import android.content.Context;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -19,10 +20,9 @@ public class AndroidBackend implements Backend {
     private final AndroidClasspathMethodScanner mClasspathMethodScanner;
     private Glue mGlue;
 
-    public AndroidBackend(Context context) {
-        mClasspathMethodScanner = new AndroidClasspathMethodScanner(context);
-        mObjectFactory = new DefaultJavaObjectFactory();
-        // cucumber.runtime.java.picocontainer.PicoFactory would also work
+    public AndroidBackend(Instrumentation instrumentation) {
+        mClasspathMethodScanner = new AndroidClasspathMethodScanner(instrumentation.getContext());
+        mObjectFactory = new AndroidObjectFactory(instrumentation);
     }
 
     public AndroidBackend(Context context, ObjectFactory objectFactory) {

@@ -1,5 +1,6 @@
 package at.mfellner.cucumber.android.api;
 
+import android.app.Instrumentation;
 import android.content.Context;
 import android.util.Log;
 import at.mfellner.cucumber.android.runtime.AndroidBackend;
@@ -28,9 +29,10 @@ class CucumberTestRunner extends ParentRunner<FeatureRunner> {
     private final JUnitReporter mJUnitReporter;
     private final List<FeatureRunner> mChildren = new ArrayList<FeatureRunner>();
 
-    public CucumberTestRunner(Context context) throws InitializationError {
+    public CucumberTestRunner(Instrumentation instrumentation) throws InitializationError {
         super(null);
 
+        Context context = instrumentation.getContext();
         ClassLoader classLoader = context.getClassLoader();
         String packageName = context.getPackageName();
 
@@ -47,7 +49,7 @@ class CucumberTestRunner extends ParentRunner<FeatureRunner> {
 
         ResourceLoader resourceLoader = new AndroidResourceLoader(context);
         List<Backend> backends = new ArrayList<Backend>();
-        backends.add(new AndroidBackend(context));
+        backends.add(new AndroidBackend(instrumentation));
         mRuntime = new Runtime(resourceLoader, classLoader, backends, runtimeOptions);
 
         mJUnitReporter = new JUnitReporter(formatter, formatter, /* strict */ true);
