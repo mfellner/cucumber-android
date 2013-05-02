@@ -1,8 +1,10 @@
-package at.mfellner.android.cucumber.example;
+package at.mfellner.android.cucumber.example.test;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
 import android.widget.TextView;
+import at.mfellner.android.cucumber.example.HelloActivity;
+import at.mfellner.android.cucumber.example.R;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
