@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
         >
 
     <TextView
-            android:layout_width="fill_parent"
+            android:id="@+id/txt_hello"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World, MainActivity"
+            android:layout_marginTop="100dp"
+            android:textSize="20dp"
+            android:gravity="center"
             />
-</LinearLayout>
+
+    <Button
+            android:id="@+id/btn_say_hello"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/btn_reset"
+            android:text="@string/btn_say_hello"
+            android:onClick="onBtnSayHelloClick"
+            />
+
+    <Button
+            android:id="@+id/btn_reset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:text="@string/btn_reset"
+            android:onClick="onBtnResetClick"
+            />
+</RelativeLayout>
 

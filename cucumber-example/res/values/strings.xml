@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AndroidCucumberExample</string>
+    <string name="btn_say_hello">say hello</string>
+    <string name="btn_reset">reset</string>
 </resources>
