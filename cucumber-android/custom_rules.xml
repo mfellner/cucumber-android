@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="custom_rules">
+    <property name="repo" value="https://oss.sonatype.org/content/repositories/releases"/>
+    <property name="cucumber-jvm.version" value="1.1.3"/>
+    <property name="junit.version" value="4.11"/>
+    <property name="hamcrest.version" value="1.3"/>
+    <property name="jars" value="libs"/>
+
+    <target name="dependencies" description="Download the required libraries.">
+        <mkdir dir="${jars}"/>
+        <get src="${repo}/info/cukes/cucumber-core/${cucumber-jvm.version}/cucumber-core-${cucumber-jvm.version}.jar"
+             dest="${jars}/cucumber-core-${cucumber-jvm.version}.jar"/>
+        <get src="${repo}/info/cukes/cucumber-java/${cucumber-jvm.version}/cucumber-java-${cucumber-jvm.version}.jar"
+             dest="${jars}/cucumber-java-${cucumber-jvm.version}.jar"/>
+        <get src="${repo}/info/cukes/cucumber-junit/${cucumber-jvm.version}/cucumber-junit-${cucumber-jvm.version}.jar"
+             dest="${jars}/cucumber-junit-${cucumber-jvm.version}.jar"/>
+        <get src="${repo}/junit/junit/${junit.version}/junit-${junit.version}.jar"
+             dest="${jars}/junit-${junit.version}.jar"/>
+        <get src="${repo}/org/hamcrest/hamcrest-core/${hamcrest.version}/hamcrest-core-${hamcrest.version}.jar"
+             dest="${jars}/hamcrest-core-${hamcrest.version}.jar"/>
+    </target>
+</project>
