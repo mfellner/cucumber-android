@@ -38,11 +38,6 @@ class AndroidObjectFactory implements ObjectFactory {
         } else {
             return cacheNewInstance(type);
         }
-//        T instance = type.cast(mInstances.get(type));
-//        if (instance == null) {
-//            instance = cacheNewInstance(type);
-//        }
-//        return instance;
     }
 
     private <T> T cacheNewInstance(Class<T> type) {
