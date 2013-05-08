@@ -2,7 +2,7 @@
 This project is basically an updated and improved version of [ccady-ubermind](https://github.com/ccady-ubermind/cucumber-android)'s **cucumber-android**.
 # Setup
 0. Run `ant dependencies` inside the `cucumber-android` subdirectory or manually download the dependencies listed in the README of that directory.
-1. Include **cucumber-android** as a library project or [download the jar](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android.jar/download). Don't forget to include the dependencies.
+1. Include **cucumber-android** as a library project or [download the jar](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android-0.1.jar/download). Don't forget to include the dependencies.
 2. Create an empty Android test-project and set the `instrumentation` like so:
 
 ```xml
