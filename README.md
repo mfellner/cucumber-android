@@ -15,6 +15,7 @@ This project is basically an updated and improved version of [ccady-ubermind](ht
 
 3. Make a new test-configuration for that project using the `CucumberInstrumentation`.
 4. Create a new `InstrumentationTest` (e.g., `ActivityInstrumentationTest2`).
+
 #### Using cucumber-android-x.x.jar
 If you don't use **cucumber-android** as a library project, your test-project needs to include the following .jars:
 * [cucumber-android-x.x.jar](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android-0.1.jar/download)
