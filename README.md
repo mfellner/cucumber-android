@@ -1,8 +1,8 @@
 # Cucumber on Android
 This project is basically an updated and improved version of [ccady-ubermind](https://github.com/ccady-ubermind/cucumber-android)'s **cucumber-android**.
 # Setup
-0. Run `ant dependencies` inside the `cucumber-android` subdirectory or manually download the dependencies listed in the README of that directory.
-1. Include **cucumber-android** as a library project or [download the jar](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android-0.1.jar/download). Don't forget to include the dependencies.
+0. Run `ant dependencies` inside the *cucumber-android* subdirectory or manually download the dependencies listed in the README of that directory and put them into *cucumber-android/libs/*
+1. Include **cucumber-android** as a library project or **[download the jar.](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android-0.1.jar/download)**
 2. Create an empty Android test-project and set the `instrumentation` like so:
 
 ```xml
@@ -12,8 +12,13 @@ This project is basically an updated and improved version of [ccady-ubermind](ht
 ```
 
 (Set `targetPackage` for the application you want to test.)
+
 3. Make a new test-configuration for that project using the `CucumberInstrumentation`.
 4. Create a new `InstrumentationTest` (e.g., `ActivityInstrumentationTest2`).
+### Using cucumber-android-x.x.jar
+If you don't use **cucumber-android** as a library project, your test-project needs to include the following .jars:
+* [cucumber-android-x.x.jar](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android-0.1.jar/download)
+* cucumber-java-x.x.x.jar
 # Features and step definitions
 1. Put all your `.feature` files inside  the subdirectory `/assets/features` of the test-project.
 2. Put your [step-defintions](http://cukes.info/step-definitions.html) inside the `InstrumentationTest` you created. You can have multiple test-classes to better organize your steps.
