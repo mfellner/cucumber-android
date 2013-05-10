@@ -1,10 +1,12 @@
 package at.mfellner.android.cucumber.example.test;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import at.mfellner.android.cucumber.example.HelloActivity;
 import at.mfellner.android.cucumber.example.R;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,6 +17,16 @@ public class HelloActivitySteps extends ActivityInstrumentationTestCase2<HelloAc
 
     public HelloActivitySteps() {
         super(HelloActivity.class);
+    }
+
+    @Before
+    public void before() {
+        Log.d("cucumber-android", "before");
+    }
+
+    @After
+    public void after() {
+        Log.d("cucumber-android", "after");
     }
 
     @Given("^I have a hello activity with \"([^\"]*)\"$")

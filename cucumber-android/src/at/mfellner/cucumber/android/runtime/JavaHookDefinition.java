@@ -3,7 +3,6 @@ package at.mfellner.cucumber.android.runtime;
 import cucumber.api.Scenario;
 import cucumber.runtime.CucumberException;
 import cucumber.runtime.HookDefinition;
-import cucumber.runtime.MethodFormat;
 import cucumber.runtime.Utils;
 import cucumber.runtime.java.ObjectFactory;
 import gherkin.TagExpression;
@@ -30,13 +29,9 @@ class JavaHookDefinition implements HookDefinition {
         this.objectFactory = objectFactory;
     }
 
-    Method getMethod() {
-        return method;
-    }
-
     @Override
     public String getLocation(boolean detail) {
-        MethodFormat format = detail ? MethodFormat.FULL : MethodFormat.SHORT;
+        AndroidMethodFormat format = detail ? AndroidMethodFormat.FULL : AndroidMethodFormat.SHORT;
         return format.format(method);
     }
 
