@@ -8,7 +8,7 @@ If you're using an IDE, first import this directory as a test-project. Then ther
 
 A. Include cucumber-android as a library project. cucumber-android's dependencies should be exported (i.e., included in this project).
 
-B. Include cucumber-android.jar and all its dependencies (i.e., the necessary .jars).
+B. Include cucumber-android-x.x-x.jar and all its dependencies (i.e., the necessary .jars).
 
 If you're using **ant,** first set up **cucumber-android** as described in its readme. Then do this:
 
