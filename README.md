@@ -16,10 +16,11 @@ This project is basically an updated and improved version of [ccady-ubermind](ht
 3. Make a new test-configuration for that project using the `CucumberInstrumentation`.
 4. Create a new `InstrumentationTest` (e.g., `ActivityInstrumentationTest2`).
 
-#### Using cucumber-android-x.x.jar
+### Using cucumber-android-x.x.jar
 If you don't use **cucumber-android** as a library project, your test-project needs to include the following .jars:
 * [cucumber-android-x.x.jar](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android-0.1.jar/download)
 * cucumber-java-x.x.x.jar
+
 # Features and step definitions
 1. Put all your `.feature` files inside  the subdirectory `/assets/features` of the test-project.
 2. Put your [step-defintions](http://cukes.info/step-definitions.html) inside the `InstrumentationTest` you created. You can have multiple test-classes to better organize your steps.
