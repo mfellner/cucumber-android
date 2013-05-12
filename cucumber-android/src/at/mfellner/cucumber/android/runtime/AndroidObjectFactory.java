@@ -1,6 +1,8 @@
 package at.mfellner.cucumber.android.runtime;
 
 import android.app.Instrumentation;
+import android.content.Intent;
+import android.test.ActivityInstrumentationTestCase2;
 import android.test.InstrumentationTestCase;
 import cucumber.runtime.CucumberException;
 import cucumber.runtime.java.ObjectFactory;
@@ -45,7 +47,14 @@ class AndroidObjectFactory implements ObjectFactory {
             Constructor<T> constructor = type.getConstructor();
             T instance = constructor.newInstance();
 
-            if (instance instanceof InstrumentationTestCase) {
+            if (instance instanceof ActivityInstrumentationTestCase2) {
+                ((ActivityInstrumentationTestCase2) instance).injectInstrumentation(mInstrumentation);
+                // This Intent prevents the ActivityInstrumentationTestCase2 to stall on
+                // Intent.startActivitySync (when calling getActivity) if the activity is already running.
+                Intent intent = new Intent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                ((ActivityInstrumentationTestCase2) instance).setActivityIntent(intent);
+            } else if (instance instanceof InstrumentationTestCase) {
                 ((InstrumentationTestCase) instance).injectInstrumentation(mInstrumentation);
             }
             mInstances.put(type, instance);
