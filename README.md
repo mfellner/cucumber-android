@@ -9,7 +9,7 @@ Read the `README` from `cucumber-android/` to either
 * use cucumber-android as an Android library-project or
 * build a cucumber-android .jar to include elsewhere.
 
-You can also **[download cucumber-android.jar here.](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android-0.1.2.jar/download)**
+You can also **[download cucumber-android.jar here.](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android-0.1.3.jar/download)**
 
 For an example, please look at `cucumber-example-test/`.
 
