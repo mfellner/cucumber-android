@@ -36,4 +36,4 @@ You can use cucumber-android as an Android library-project or use a pre-built .j
 3. You can have multiple test-classes for your step-definitions, refer to `cucumber-example-test/` for an example.
 4. Start the test-project and the `CucumberInstrumentation` will run all your features.
 
-*There is no way to only run selected features or scenarios at this time.*
+*You can use @RunWithCucumber to pass parameters to Cucumber.*
