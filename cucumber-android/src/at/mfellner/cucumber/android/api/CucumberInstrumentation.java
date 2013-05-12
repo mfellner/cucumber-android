@@ -29,6 +29,7 @@ public class CucumberInstrumentation extends Instrumentation {
     public static final String REPORT_KEY_NAME_CLASS = "class";
     public static final String REPORT_KEY_NAME_TEST = "test";
     public static final int REPORT_VALUE_RESULT_START = 1;
+    public static final int REPORT_VALUE_RESULT_ERROR = -1;
     public static final int REPORT_VALUE_RESULT_FAILURE = -2;
     public static final String REPORT_KEY_STACK = "stack";
     public static final String TAG = "cucumber-android";
@@ -121,6 +122,7 @@ public class CucumberInstrumentation extends Instrumentation {
         private int mTestResultCode;
         private Feature mFeature;
         private boolean mBefore;
+        private Step mStep;
 
         public AndroidReporter(int numTests) {
             mFormatter = new AndroidFormatter(TAG);
@@ -164,6 +166,7 @@ public class CucumberInstrumentation extends Instrumentation {
 
         @Override
         public void step(Step step) {
+            mStep = step;
             mFormatter.step(step);
         }
 
@@ -238,6 +241,15 @@ public class CucumberInstrumentation extends Instrumentation {
                 mTestResult.putString(REPORT_KEY_STACK, result.getErrorMessage());
                 mTestResultCode = REPORT_VALUE_RESULT_FAILURE;
                 mTestResult.putString(Instrumentation.REPORT_KEY_STREAMRESULT, result.getErrorMessage());
+            } else if (result.getStatus().equals("undefined")) {
+                List<String> snippets = mRuntime.getSnippets();
+                String report = String.format("Missing step-definition\n\n%s\nfor step '%s'",
+                        snippets.get(snippets.size() - 1),
+                        mStep.getName());
+                mTestResult.putString(REPORT_KEY_STACK, report);
+                mTestResultCode = REPORT_VALUE_RESULT_ERROR;
+                mTestResult.putString(Instrumentation.REPORT_KEY_STREAMRESULT,
+                        String.format("Missing step-definition: %s", mStep.getName()));
             }
         }
     }
