@@ -2,15 +2,13 @@ package at.mfellner.cucumber.android.runtime;
 
 import android.util.Log;
 import gherkin.formatter.Formatter;
-import gherkin.formatter.Reporter;
 import gherkin.formatter.model.*;
 
 import java.util.List;
 
-public class AndroidFormatter implements Formatter, Reporter {
+public class AndroidFormatter implements Formatter {
     private final String mLogtag;
     private String mUri;
-    private Match mMatch;
 
     public AndroidFormatter(String logtag) {
         mLogtag = logtag;
@@ -66,37 +64,5 @@ public class AndroidFormatter implements Formatter, Reporter {
 
     @Override
     public void close() {
-    }
-
-    // reporter methods
-
-    @Override
-    public void before(Match match, Result result) {
-        mMatch = match;
-        Log.d(mLogtag, result.getStatus());
-    }
-
-    @Override
-    public void after(Match match, Result result) {
-        mMatch = match;
-        Log.d(mLogtag, result.getStatus());
-    }
-
-    @Override
-    public void match(Match match) {
-        mMatch = match;
-    }
-
-    @Override
-    public void result(Result result) {
-        Log.d(mLogtag, String.format("%s: %s", result.getStatus(), mMatch.getLocation()));
-    }
-
-    @Override
-    public void embedding(String mimeType, byte[] data) {
-    }
-
-    @Override
-    public void write(String text) {
     }
 }
