@@ -5,8 +5,6 @@ This project has the following dependencies:
 * cucumber-android
 * [cucumber-java-x.x.x.jar](http://cukes.info/install-cucumber-jvm.html)
 
-If you're using an **IDE,** first import this directory as a test-project. Then there are two possibilites:
-
 #### Using an IDE
 
 1. Create an Android test-project from these sources.
