@@ -1,17 +1,24 @@
-Features must be placed in **assets/features/**. Subdirectories are not supported at this time.
+Features must be placed in `assets/features/`. Subdirectories are not supported at this time.
 
-This project has the following build-dependencies:
-* cucumber-android (library project)
-* cucumber-java-1.1.3.jar
+This project has the following dependencies:
 
-If you're using an IDE, first import this directory as a test-project. Then there are two ways to get going:
+* cucumber-android
+* [cucumber-java-x.x.x.jar](http://cukes.info/install-cucumber-jvm.html)
 
-A. Include cucumber-android as a library project. cucumber-android's dependencies should be exported (i.e., included in this project).
+If you're using an **IDE,** first import this directory as a test-project. Then there are two possibilites:
 
-B. Include cucumber-android-x.x-x.jar and all its dependencies (i.e., the necessary .jars).
+#### Using an IDE
+
+1. Create an Android test-project from these sources.
+2. Create a run/debug configuration with `at.mfellner.cucumber.android.api.CucumberInstrumentation`
+3. Include cucumber-android as a library project **or** put cucumber-android-x.x.x.jar into `libs/` (and include it).
+4. Put cucumber-java-x.x.x.jar into `libs/` (and include it).
 
 If you're using **ant,** first set up **cucumber-android** as described in its readme. Then do this:
 
-1. Copy **cucumber-java-x.x.x.jar** into the *libs/* subdirectory. This is necessary, because the Android ant-build-system sucks, and you can't reference the .jars from somewhere else.
-2. Make sure to set `$ANDROID_HOME` or create local.properties with `sdk.dir=/path/to/sdk`.
-3. Run `run_test.sh`, because the ant-job 'test' doesn't respect the custom Instrumentation.
+#### Using ant
+
+1. By default, `project.properties` includes cucumber-android as a library project. Remove the appropriate line, if you want to put cucumber-java-x.x.x.jar into `libs/` instead.
+2. Put `cucumber-java-x.x.x.jar` into `libs/`.
+3. Make sure everything is set up to [build and run from the command line](http://developer.android.com/tools/building/building-cmdline.html).
+4. Use `run_test.sh` to [run the tests with adb](http://developer.android.com/tools/testing/testing_otheride.html#RunTestsCommand).

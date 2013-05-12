@@ -1,28 +1,39 @@
-# Cucumber on Android
+## Cucumber on Android
+
 This project is basically an updated and improved version of [ccady-ubermind](https://github.com/ccady-ubermind/cucumber-android)'s **cucumber-android**.
-# Setup
-0. Run `ant dependencies` inside the *cucumber-android* subdirectory or manually download the dependencies listed in the README of that directory and put them into *cucumber-android/libs/*
-1. Include **cucumber-android** as a library project or **[download the jar.](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android-0.1.2.jar/download)**
-2. Create an empty Android test-project and set the `instrumentation` like so:
+
+## Getting started
+
+Read the `README` from `cucumber-android/` to either
+
+* use cucumber-android as an Android library-project or
+* build a cucumber-android .jar to include elsewhere.
+
+You can also **[download cucumber-android.jar here.](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android-0.1.2.jar/download)**
+
+For an example, please look at `cucumber-example-test/`.
+
+### Using cucumber-android in your own project
+
+You can use cucumber-android as an Android library-project or use a pre-built .jar.
+
+1. Create a new empty [Android test-project](http://developer.android.com/tools/testing/index.html).
+2. Change the [instrumentation](http://developer.android.com/tools/testing/testing_android.html#InstrumentationTestRunner) in `AndroidManifest.xml` from `InstrumentationTestRunner` to `CucumberInstrumentation`:
 
 ```xml
 <instrumentation
   android:name="at.mfellner.cucumber.android.api.CucumberInstrumentation"
-  android:targetPackage="at.mfellner.android.cucumber.example"/>
+  android:targetPackage="package.of.your.own.application"/>
 ```
 
-(Set `targetPackage` for the application you want to test.)
+3. Include cucumber-android and [cucumber-java](http://cukes.info/install-cucumber-jvm.html).
+4. Create a new test-configuration that uses the `CucumberInstrumentation` instrumentation runner.
 
-3. Make a new test-configuration for that project using the `CucumberInstrumentation`.
-4. Create a new `InstrumentationTest` (e.g., `ActivityInstrumentationTest2`).
+### Features and step definitions
 
-### Using cucumber-android-x.x.jar
-If you don't use **cucumber-android** as a library project, your test-project needs to include the following .jars:
-* [cucumber-android-x.x-x.jar](http://sourceforge.net/projects/cucumberandroid/files/cucumber-android-0.1.2.jar/download)
-* cucumber-java-x.x.x.jar
+1. Put all your `.feature` files inside  the subdirectory `assets/features/` of the test-project.
+2. For your [step-defintions](http://cukes.info/step-definitions.html), you must use an `InstrumentationTest` (e.g. `ActivityInstrumentationTestCase2`).
+3. You can have multiple test-classes for your step-definitions, refer to `cucumber-example-test/` for an example.
+4. Start the test-project and the `CucumberInstrumentation` will run all your features.
 
-# Features and step definitions
-1. Put all your `.feature` files inside  the subdirectory `/assets/features` of the test-project.
-2. Put your [step-defintions](http://cukes.info/step-definitions.html) inside the `InstrumentationTest` you created. You can have multiple test-classes to better organize your steps.
-3. Run the tests like you would any ordinary Android test.
-4. Some things don't work yet; this is an early version.
+*There is no way to only run selected features or scenarios at this time.*
