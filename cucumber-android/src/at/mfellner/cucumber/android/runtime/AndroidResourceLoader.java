@@ -21,17 +21,23 @@ public class AndroidResourceLoader implements ResourceLoader {
     @Override
     public Iterable<Resource> resources(String path, String suffix) {
         List<Resource> resources = new ArrayList<Resource>();
-        AssetManager am = mContext.getAssets();
+        AssetManager assetManager = mContext.getAssets();
         try {
-            for (String file_name : am.list(path)) {
-                if (file_name.endsWith(suffix)) {
-                    Resource as = new AndroidResource(mContext, String.format("%s/%s", path, file_name));
-                    resources.add(as);
-                }
-            }
+            addResourceRecursive(resources, assetManager, path, suffix);
         } catch (IOException e) {
-            Log.e(CucumberInstrumentation.TAG, "AndroidResourceLoader.resources " + e.toString());
+            Log.e(CucumberInstrumentation.TAG, "Error loading resources.", e);
         }
         return resources;
+    }
+
+    private void addResourceRecursive(List<Resource> res, AssetManager am, String path, String suffix) throws IOException {
+        for (String name : am.list(path)) {
+            if (name.endsWith(suffix)) {
+                Resource as = new AndroidResource(mContext, String.format("%s/%s", path, name));
+                res.add(as);
+            } else {
+                addResourceRecursive(res, am, String.format("%s/%s", path, name), suffix);
+            }
+        }
     }
 }

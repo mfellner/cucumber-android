@@ -1,4 +1,4 @@
-Features must be placed in `assets/features/`. Subdirectories are not supported at this time.
+Features must be placed in `assets/features/`. Subdirectories are allowed.
 
 This project has the following dependencies:
 
