@@ -31,12 +31,16 @@ public class AndroidResourceLoader implements ResourceLoader {
     }
 
     private void addResourceRecursive(List<Resource> res, AssetManager am, String path, String suffix) throws IOException {
-        for (String name : am.list(path)) {
-            if (name.endsWith(suffix)) {
-                Resource as = new AndroidResource(mContext, String.format("%s/%s", path, name));
-                res.add(as);
-            } else {
-                addResourceRecursive(res, am, String.format("%s/%s", path, name), suffix);
+        if (path.endsWith(suffix)) {
+            res.add(new AndroidResource(mContext, path));
+        } else {
+            for (String name : am.list(path)) {
+                if (name.endsWith(suffix)) {
+                    Resource as = new AndroidResource(mContext, String.format("%s/%s", path, name));
+                    res.add(as);
+                } else {
+                    addResourceRecursive(res, am, String.format("%s/%s", path, name), suffix);
+                }
             }
         }
     }
