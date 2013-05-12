@@ -12,9 +12,7 @@ This project has the following dependencies:
 3. Include cucumber-android as a library-project **or** put cucumber-android-x.x.x.jar into `libs/` (and include it).
 4. Put cucumber-java-x.x.x.jar into `libs/` (and include it).
 
-*For each Android project, Eclipse and ADT will automatically include all .jars from the libs/ directory.*
-
-*In IDEA you need to manually include dependencies for each module. However, you can share dependencies across modules by exporting them in order to avoid duplicate files.*
+*Note: For each Android project, Eclipse and ADT will automatically include all .jars from the libs/ directory. In IDEA you need to manually include dependencies for each module. However, you can share dependencies across modules by exporting them in order to avoid duplicate files.*
 
 #### Using ant
 
@@ -24,4 +22,4 @@ This project has the following dependencies:
 3. Make sure everything is set up to [build and run from the command line](http://developer.android.com/tools/building/building-cmdline.html).
 4. Use `run_test.sh` to [run the tests with adb](http://developer.android.com/tools/testing/testing_otheride.html#RunTestsCommand).
 
-*For each Android project, ant will automatically include all .jars from the libs/ directory.*
+*Note: For each Android project, ant will automatically include all .jars from the libs/ directory.*
