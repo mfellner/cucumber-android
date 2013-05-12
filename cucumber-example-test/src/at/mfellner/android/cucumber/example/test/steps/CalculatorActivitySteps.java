@@ -1,4 +1,4 @@
-package at.mfellner.android.cucumber.example.test;
+package at.mfellner.android.cucumber.example.test.steps;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.TextView;
@@ -10,7 +10,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-import static at.mfellner.android.cucumber.example.test.Utils.clickOnView;
+import static at.mfellner.android.cucumber.example.test.steps.Utils.clickOnView;
 
 public class CalculatorActivitySteps extends ActivityInstrumentationTestCase2<CalculatorActivity> {
     private CalculatorActivity mActivity;

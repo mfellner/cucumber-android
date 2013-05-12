@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
 import at.mfellner.cucumber.android.runtime.AndroidBackend;
+import at.mfellner.cucumber.android.runtime.AndroidClasspathMethodScanner;
 import at.mfellner.cucumber.android.runtime.AndroidFormatter;
 import at.mfellner.cucumber.android.runtime.AndroidResourceLoader;
 import cucumber.runtime.Backend;
@@ -14,15 +15,20 @@ import cucumber.runtime.Runtime;
 import cucumber.runtime.RuntimeOptions;
 import cucumber.runtime.io.ResourceLoader;
 import cucumber.runtime.model.*;
+import ext.android.test.ClassPathPackageInfoSource;
 import gherkin.formatter.Formatter;
 import gherkin.formatter.Reporter;
 import gherkin.formatter.model.*;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 public class CucumberInstrumentation extends Instrumentation {
+    public static final String ARGUMENT_TEST_CLASS = "class";
+    public static final String ARGUMENT_TEST_PACKAGE = "package";
     public static final String REPORT_VALUE_ID = "InstrumentationTestRunner";
     public static final String REPORT_KEY_NUM_TOTAL = "numtests";
     public static final String REPORT_KEY_NUM_CURRENT = "current";
@@ -37,6 +43,8 @@ public class CucumberInstrumentation extends Instrumentation {
     ResourceLoader mResourceLoader;
     ClassLoader mClassLoader;
     private Runtime mRuntime;
+    String mPackageOfTests;
+    String mFeatures;
 
     @Override
     public void onCreate(Bundle arguments) {
@@ -44,13 +52,46 @@ public class CucumberInstrumentation extends Instrumentation {
 
         Context context = getContext();
         mClassLoader = context.getClassLoader();
-        // this is the package name as defined in AndroidManifest.xml
-        String glue = context.getPackageName();
+
+        // For glue and features either use the provided arguments or try to find a RunWithCucumber annotated class.
+        // If nothing works, default values will be used instead.
+        if (arguments != null &&
+                (arguments.containsKey(ARGUMENT_TEST_CLASS) || arguments.containsKey(ARGUMENT_TEST_PACKAGE))) {
+
+            String testClass = arguments.getString(ARGUMENT_TEST_CLASS, "null");
+            mPackageOfTests = arguments.getString(ARGUMENT_TEST_PACKAGE);
+
+            try {
+                Class<?> clazz = mClassLoader.loadClass(testClass);
+                boolean annotationWasPresent = readRunWithCucumberAnnotation(clazz);
+
+                // If the class is not RunWithCucumber annotated, maybe it's Cucumber annotated?
+                if (!annotationWasPresent) {
+                    SEARCH_ANNOTATION:
+                    for (Method m : clazz.getMethods()) {
+                        for (Annotation a : m.getAnnotations()) {
+                            if (a.annotationType().getName().startsWith("cucumber") && mPackageOfTests == null) {
+                                mPackageOfTests = testClass.substring(0, testClass.lastIndexOf("."));
+                                break SEARCH_ANNOTATION;
+                            }
+                        }
+                    }
+                }
+            } catch (ClassNotFoundException e) {
+                Log.w(TAG, e.toString());
+            }
+        } else {
+            ClassPathPackageInfoSource source = AndroidClasspathMethodScanner.classPathPackageInfoSource(context);
+            for (Class<?> clazz : source.getPackageInfo(context.getPackageName()).getTopLevelClassesRecursive()) {
+                if (readRunWithCucumberAnnotation(clazz)) break;
+            }
+        }
 
         Properties properties = new Properties();
-        // 'features' must be a subdirectory of the test-projects 'assets' directory
-        String features = "features";
-        properties.setProperty("cucumber.options", String.format("-g %s %s", glue, features));
+        mPackageOfTests = mPackageOfTests != null ? mPackageOfTests : defaultGlue();
+        mFeatures = mFeatures != null ? mFeatures : defaultFeatures();
+
+        properties.setProperty("cucumber.options", String.format("-g %s %s", mPackageOfTests, mFeatures));
         mRuntimeOptions = new RuntimeOptions(properties);
 
         mResourceLoader = new AndroidResourceLoader(context);
@@ -59,6 +100,27 @@ public class CucumberInstrumentation extends Instrumentation {
         mRuntime = new Runtime(mResourceLoader, mClassLoader, backends, mRuntimeOptions);
 
         start();
+    }
+
+    /**
+     * @return true if the class is RunWithCucumber annotated, false otherwise
+     */
+    private boolean readRunWithCucumberAnnotation(Class<?> clazz) {
+        RunWithCucumber annotation = clazz.getAnnotation(RunWithCucumber.class);
+        if (annotation != null) {
+            mPackageOfTests = annotation.glue().isEmpty() ? defaultGlue() : annotation.glue();
+            mFeatures = annotation.features().isEmpty() ? defaultFeatures() : annotation.features();
+            return true;
+        }
+        return false;
+    }
+
+    private String defaultFeatures() {
+        return "features";
+    }
+
+    private String defaultGlue() {
+        return getContext().getPackageName();
     }
 
     @Override

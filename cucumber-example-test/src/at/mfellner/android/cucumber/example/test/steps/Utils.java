@@ -1,4 +1,4 @@
-package at.mfellner.android.cucumber.example.test;
+package at.mfellner.android.cucumber.example.test.steps;
 
 import android.app.Activity;
 import android.util.Log;

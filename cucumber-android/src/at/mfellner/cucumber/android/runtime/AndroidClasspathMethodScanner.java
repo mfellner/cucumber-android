@@ -14,21 +14,23 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-class AndroidClasspathMethodScanner {
+public class AndroidClasspathMethodScanner {
     private final Collection<Class<? extends Annotation>> mCucumberAnnotationClasses;
-    private final ClassPathPackageInfoSource mSource;
+    private static ClassPathPackageInfoSource mSource;
 
-    public AndroidClasspathMethodScanner(Context context) {
-        mSource = classPathPackageInfoSource(context);
+    AndroidClasspathMethodScanner(Context context) {
+        classPathPackageInfoSource(context);
         mCucumberAnnotationClasses = findCucumberAnnotationClasses();
     }
 
-    private static ClassPathPackageInfoSource classPathPackageInfoSource(Context context) {
-        String apkPath = context.getPackageCodePath();
-        ClassPathPackageInfoSource.setApkPaths(new String[]{apkPath});
-        ClassPathPackageInfoSource source = new ClassPathPackageInfoSource();
-        source.setClassLoader(context.getClassLoader());
-        return source;
+    public static ClassPathPackageInfoSource classPathPackageInfoSource(Context context) {
+        if (mSource == null) {
+            String apkPath = context.getPackageCodePath();
+            ClassPathPackageInfoSource.setApkPaths(new String[]{apkPath});
+            mSource = new ClassPathPackageInfoSource();
+        }
+        mSource.setClassLoader(context.getClassLoader());
+        return mSource;
     }
 
     /**
@@ -37,7 +39,7 @@ class AndroidClasspathMethodScanner {
      * @param androidBackend the backend where stepdefs and hooks will be registered
      * @param gluePaths      where to look
      */
-    public void scan(AndroidBackend androidBackend, List<String> gluePaths) {
+    void scan(AndroidBackend androidBackend, List<String> gluePaths) {
         for (String gluePath : gluePaths) {
             for (Class<?> glueCodeClass : mSource.getPackageInfo(gluePath).getTopLevelClassesRecursive()) {
                 while (glueCodeClass != null && glueCodeClass != Object.class && !Utils.isInstantiable(glueCodeClass)) {
@@ -60,7 +62,7 @@ class AndroidClasspathMethodScanner {
      * @param method         a candidate for being a stepdef or hook.
      * @param glueCodeClass  the class where the method is declared.
      */
-    public void scan(AndroidBackend androidBackend, Method method, Class<?> glueCodeClass) {
+    void scan(AndroidBackend androidBackend, Method method, Class<?> glueCodeClass) {
         for (Class<? extends Annotation> cucumberAnnotationClass : mCucumberAnnotationClasses) {
             Annotation annotation = method.getAnnotation(cucumberAnnotationClass);
             if (annotation != null) {
