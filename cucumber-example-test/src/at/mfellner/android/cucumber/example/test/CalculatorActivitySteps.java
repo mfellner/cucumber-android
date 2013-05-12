@@ -90,10 +90,10 @@ public class CalculatorActivitySteps extends ActivityInstrumentationTestCase2<Ca
         }
     }
 
-    @Then("I should see (\\d+.?\\d*)")
-    public void I_should_see_d(String d) {
+    @Then("I should see (\\S+) on the display")
+    public void I_should_see_s_on_the_display(String s) {
         TextView display = (TextView) mActivity.findViewById(R.id.txt_calc_display);
         String displayed_result = display.getText().toString();
-        assertEquals(d, displayed_result);
+        assertEquals(s, displayed_result);
     }
 }
