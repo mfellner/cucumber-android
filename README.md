@@ -1,6 +1,6 @@
 ## Cucumber on Android
 
-This project is basically an updated and improved version of [ccady-ubermind](https://github.com/ccady-ubermind/cucumber-android)'s **cucumber-android**.
+This project provides an Android-backend to [cucumber-jvm](https://github.com/cucumber/cucumber-jvm) and is basically an updated and improved version of [ccady-ubermind](https://github.com/ccady-ubermind/cucumber-android)'s *cucumber-android.*
 
 ## Getting started
 
