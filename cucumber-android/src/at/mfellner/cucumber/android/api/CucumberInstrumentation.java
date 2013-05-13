@@ -144,7 +144,6 @@ public class CucumberInstrumentation extends Instrumentation {
                 }
             }
         }
-        Log.d(TAG, String.format("Number of Scenarios: %d", numScenarios));
 
         AndroidReporter reporter = new AndroidReporter(numScenarios);
         mRuntimeOptions.formatters.clear();
