@@ -58,7 +58,8 @@ public class CucumberInstrumentation extends Instrumentation {
         if (arguments != null &&
                 (arguments.containsKey(ARGUMENT_TEST_CLASS) || arguments.containsKey(ARGUMENT_TEST_PACKAGE))) {
 
-            String testClass = arguments.getString(ARGUMENT_TEST_CLASS, "null");
+            String testClass = arguments.getString(ARGUMENT_TEST_CLASS);
+            testClass = testClass != null ? testClass : "null";
             mPackageOfTests = arguments.getString(ARGUMENT_TEST_PACKAGE);
 
             try {
