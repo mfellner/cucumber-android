@@ -1,4 +1,4 @@
-package at.mfellner.cucumber.android.api;
+package cucumber.api.android;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

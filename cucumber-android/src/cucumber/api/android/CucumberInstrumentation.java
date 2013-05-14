@@ -1,4 +1,4 @@
-package at.mfellner.cucumber.android.api;
+package cucumber.api.android;
 
 import android.app.Activity;
 import android.app.Instrumentation;
@@ -6,10 +6,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
-import at.mfellner.cucumber.android.runtime.AndroidBackend;
-import at.mfellner.cucumber.android.runtime.AndroidClasspathMethodScanner;
-import at.mfellner.cucumber.android.runtime.AndroidFormatter;
-import at.mfellner.cucumber.android.runtime.AndroidResourceLoader;
+import cucumber.runtime.android.AndroidBackend;
+import cucumber.runtime.android.AndroidClasspathMethodScanner;
+import cucumber.runtime.android.AndroidFormatter;
+import cucumber.runtime.android.AndroidResourceLoader;
 import cucumber.runtime.Backend;
 import cucumber.runtime.Runtime;
 import cucumber.runtime.RuntimeOptions;

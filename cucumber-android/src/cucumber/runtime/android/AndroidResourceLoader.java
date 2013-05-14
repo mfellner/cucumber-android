@@ -1,9 +1,9 @@
-package at.mfellner.cucumber.android.runtime;
+package cucumber.runtime.android;
 
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
-import at.mfellner.cucumber.android.api.CucumberInstrumentation;
+import cucumber.api.android.CucumberInstrumentation;
 import cucumber.runtime.io.Resource;
 import cucumber.runtime.io.ResourceLoader;
 

@@ -1,6 +1,6 @@
 package at.mfellner.android.cucumber.example.test;
 
-import at.mfellner.cucumber.android.api.RunWithCucumber;
+import cucumber.api.android.RunWithCucumber;
 import junit.framework.TestCase;
 
 /**

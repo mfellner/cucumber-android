@@ -1,4 +1,4 @@
-package at.mfellner.cucumber.android.runtime;
+package cucumber.runtime.android;
 
 import cucumber.runtime.snippets.Snippet;
 
