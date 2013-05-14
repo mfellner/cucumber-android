@@ -6,3 +6,4 @@ libs/*.jar
 bin/
 gen/
 out/
+target/
