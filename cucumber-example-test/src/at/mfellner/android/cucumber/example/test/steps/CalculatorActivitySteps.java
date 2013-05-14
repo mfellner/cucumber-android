@@ -27,13 +27,13 @@ public class CalculatorActivitySteps extends ActivityInstrumentationTestCase2<Ca
     public void after() {
     }
 
-    @Given("I have a CalculatorActivity")
+    @Given("^I have a CalculatorActivity$")
     public void I_have_a_CalculatorActivity() {
         mActivity = getActivity();
         assertNotNull(mActivity);
     }
 
-    @When("I press (\\d)")
+    @When("^I press (\\d)$")
     public void I_press_d(int d) {
         switch (d) {
             case 0:
@@ -69,7 +69,7 @@ public class CalculatorActivitySteps extends ActivityInstrumentationTestCase2<Ca
         }
     }
 
-    @When("I press ([+–x\\/=])")
+    @When("^I press ([+–x\\/=])$")
     public void I_press_op(char op) {
         switch (op) {
             case '+':
@@ -90,7 +90,7 @@ public class CalculatorActivitySteps extends ActivityInstrumentationTestCase2<Ca
         }
     }
 
-    @Then("I should see (\\S+) on the display")
+    @Then("^I should see (\\S+) on the display$")
     public void I_should_see_s_on_the_display(String s) {
         TextView display = (TextView) mActivity.findViewById(R.id.txt_calc_display);
         String displayed_result = display.getText().toString();
