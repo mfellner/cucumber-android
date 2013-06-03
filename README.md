@@ -22,7 +22,7 @@ You can use cucumber-android as an Android library-project or use a pre-built .j
 
 ```xml
 <instrumentation
-  android:name="at.mfellner.cucumber.android.api.CucumberInstrumentation"
+  android:name="cucumber.api.android.CucumberInstrumentation"
   android:targetPackage="package.of.your.own.application"/>
 ```
 
