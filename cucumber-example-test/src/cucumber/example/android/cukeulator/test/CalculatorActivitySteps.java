@@ -1,16 +1,16 @@
-package at.mfellner.android.cucumber.example.test.steps;
+package cucumber.example.android.cukeulator.test;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.TextView;
-import at.mfellner.android.cucumber.example.CalculatorActivity;
-import at.mfellner.android.cucumber.example.R;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.example.android.cukeulator.CalculatorActivity;
+import cucumber.example.android.cukeulator.R;
 
-import static at.mfellner.android.cucumber.example.test.steps.Utils.clickOnView;
+import static cucumber.example.android.cukeulator.test.Utils.clickOnView;
 
 public class CalculatorActivitySteps extends ActivityInstrumentationTestCase2<CalculatorActivity> {
     private CalculatorActivity mActivity;
